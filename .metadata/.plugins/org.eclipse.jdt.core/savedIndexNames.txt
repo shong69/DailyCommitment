@@ -121,7 +121,6 @@ INDEX VERSION 1.134+C:\workspace\DailyCommitment\.metadata\.plugins\org.eclipse.
 1611990471.index
 416194313.index
 3301380637.index
-2672304459.index
 1045328105.index
 4087743462.index
 2027849149.index
