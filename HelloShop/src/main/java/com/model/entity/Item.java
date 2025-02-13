@@ -20,9 +20,16 @@ public class Item {
 	private int price;   //가격
 	private int stockQuantity; //재고수량
 	
+	//다대다 양방향
 	@ManyToMany(mappedBy="items")
 	private List<Category> categories = new ArrayList<Category>(); 
 	
+	public List<Category> getCategories() {
+		return categories;
+	}
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
 	public Long getId() {
 		return id;
 	}
