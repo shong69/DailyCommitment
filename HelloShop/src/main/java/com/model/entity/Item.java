@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Item {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE) //상속 관계 매핑
+@DiscriminatorColumn(name="DTYPE") //DTYPE 으로 구분
+public abstract class Item {
 
 	@Id @GeneratedValue
 	@Column(name="ITEM_ID")

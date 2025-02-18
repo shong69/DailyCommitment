@@ -1,5 +1,0 @@
-package com.domain;
-
-public class OrderStatus {
-	ORDER, CANCEL
-}

@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="ORDERS")
-public class Order {
+public class Order extends BaseEntity{ //등록일과 수정일 상속받음
 	@Id @GeneratedValue
 	@Column(name="ORDER_ID")
 	private Long id;

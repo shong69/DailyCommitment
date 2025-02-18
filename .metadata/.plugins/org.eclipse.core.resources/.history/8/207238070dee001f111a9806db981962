@@ -1,0 +1,13 @@
+package com.model.entity;
+
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("A")
+public class Album {
+	
+	private String artist;
+	private String etc;
+
+}
