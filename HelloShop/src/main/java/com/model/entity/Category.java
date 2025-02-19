@@ -3,6 +3,8 @@ package com.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.model.entity.item.Item;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
