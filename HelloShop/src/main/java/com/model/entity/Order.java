@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,16 +26,18 @@ public class Order extends BaseEntity{ //등록일과 수정일 상속받음
 	private Long id;
 	
 	//다대일관계
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY) //지연 로딩 설정
 	@JoinColumn(name="MEMBER_ID")
 	private Member member;
 	
 	//일대다 관계
-	@OneToMany(mappedBy="order")
+	@OneToMany(mappedBy="order", //@OneToMany는 기본이 지연로딩
+			cascade=CascadeType.ALL) //영속성 전이(주문-주문상품)
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
 	//일대일 관계
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL, //영속성 전이(주문-배송)
+			fetch=FetchType.LAZY) //지연 로딩 설정
 	@JoinColumn(name="DELIVERY_ID")
 	private Delivery delivery;
 	
@@ -43,13 +47,7 @@ public class Order extends BaseEntity{ //등록일과 수정일 상속받음
 	private OrderStatus status;
 
 	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 
 	//==연관관계 메소드==//
 	public void setMember(Member member) {
@@ -73,6 +71,14 @@ public class Order extends BaseEntity{ //등록일과 수정일 상속받음
 		delivery.setOrder(this);
 	}
 	
+	//Getter, Setter
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}

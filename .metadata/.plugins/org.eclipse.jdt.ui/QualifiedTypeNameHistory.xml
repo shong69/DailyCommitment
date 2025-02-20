@@ -45,4 +45,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.MappedSuperclass"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.CascadeType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
 </qualifiedTypeNameHistroy>

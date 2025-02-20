@@ -4,6 +4,7 @@ import com.model.entity.item.Item;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -17,11 +18,11 @@ public class OrderItem {
 	@Column(name="ORDER_ITEM_ID")
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY) //지연 로딩 설정
 	@JoinColumn(name="ITEM_ID")
 	private Item item;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY) //지연 로딩 설정
 	@JoinColumn(name="ORDER_ID")
 	private Order order;
 	
