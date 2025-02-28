@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,14 +18,17 @@ public class Member extends BaseEntity{ //등록일과 수정일 상속받음
 	private Long id;
 	
 	private String name;
-	private String city;
-	private String street;
-	private String zipcode;
+	//private String city;
+	//private String street;
+	//private String zipcode;
+	@Embedded
+	private Address address;
+	
 	public Long getId() {
 		return id;
 	}
 	
-	//일대다 관계
+	//회원과 주문 일대다 관계
 	@OneToMany(mappedBy="member")
 	private List<Order> orders = new ArrayList<Order>();
 	
@@ -37,29 +41,13 @@ public class Member extends BaseEntity{ //등록일과 수정일 상속받음
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getStreet() {
-		return street;
-	}
+
 	public List<Order> getOrders() {
 		return orders;
 	}
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
+
 	
 }
