@@ -1,0 +1,7 @@
+package jpabook.Service;
+
+public interface OrderService {
+	
+	
+	
+}

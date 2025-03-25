@@ -38,7 +38,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Inheritance"/>
     <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorColumn"/>
     <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorValue"/>
@@ -47,4 +46,7 @@
     <fullyQualifiedTypeName name="org.hibernate.annotations.CascadeType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.EnumType"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="jpabook.jpashop.domain.Member"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
