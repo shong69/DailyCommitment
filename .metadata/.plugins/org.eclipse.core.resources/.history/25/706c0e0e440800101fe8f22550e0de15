@@ -1,6 +1,0 @@
-package jpabook.domain;
-
-public class Snippet {
-	함수를 이용한 연속부분수열 여부 판단하기
-}
-

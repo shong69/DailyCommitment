@@ -17,8 +17,7 @@ public class MemberRepository {
 	//스프링에서 EntityManger을 Bean으로 주입할 때 사용하는 어노테이션
 	//컨테이너가 관리하는 엔티티 매니저를 주입해준다. -> 컨테이너가 제공하는 트랜잭션 기능과 연계할 수 있은ㅁ
 	@PersistenceContext
-	EntityManager em;
-	
+	EntityManager em;	
 	
 	/** 회원 엔티티 저장(영속화)
 	 * @param member

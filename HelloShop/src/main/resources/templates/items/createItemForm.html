@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "container">
+        <h2>상품 등록</h2>
+        <form th:action="@{/items/new}" method="post" th:object="${Book}">
+            <div class="form-group">
+                <label for="name">상품명</label>
+                <input type="text" th:field="*{name}" class="form-control" id = "name" placeholder="이름을 입력하세요">
+            </div>
+            <div class="form-group">
+                <lable for = "price">가격</lable>
+                <input type = "text" th:field="*{price}" class="form-control" id="price" placeholder="가격을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="stockQuantity">수량</label>
+                <input type="number" th:field="*{stockQuantity}" class="form-control" id="stockQuantity" placeholder="수량을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="isbn"></label>
+                <input type="text" th:field="*{isbn}" class="form-group" id="isbn" placeholder="ISBN을 입력하세요">
+            </div>
+            <button type = "submit" class="btn btn-primary">등록</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,7 +1,0 @@
-package jpabook.jpashop.Service;
-
-public interface OrderService {
-	
-	
-	
-}

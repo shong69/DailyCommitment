@@ -12,6 +12,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
 import jpabook.jpashop.domain.Category;
+import jpabook.jpashop.domain.exception.NotEnoughStockException;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE) //상속 관계 매핑
@@ -29,6 +30,25 @@ public abstract class Item {
 	//다대다 양방향
 	@ManyToMany(mappedBy="items")
 	private List<Category> categories = new ArrayList<Category>(); 
+	
+	//==비즈니스 로직==//
+	/** 재고 증가 메소드 (재고 증가 or 상품 주문을 취소한 경우)
+	 * @param quantity
+	 */
+	public void addStock(int quantity) {
+		this.stockQuantity += quantity;
+	}
+	
+	/** 재고 감소 메소드(재고 부족 시 예외 발생)
+	 * @param quantity
+	 */
+	public void removeStock(int quantity) {
+		int restStock = this.stockQuantity - quantity;
+		if(restStock < 0) {
+			throw new NotEnoughStockException("need more stock");
+		}
+		this.stockQuantity = restStock;
+	}
 	
 	public List<Category> getCategories() {
 		return categories;

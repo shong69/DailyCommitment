@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div th:replace="fragment/bodyHeader :: bodyHeader"></div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>상품명</th>
+                    <th>가격</th>
+                    <th>재고수량</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="${items}">
+                    <td th:text="${item.id}">id</td>
+                    <td th:text="${item.name}">상품명</td>
+                    <td th:text="${item.price}">10000</td>
+                    <td th:text="${item.stockQuantity}">10</td>
+                    <td>
+                        <a href="@{/items/{id}/edit(id=${item.id})}"class="btn btn-primary" role="button">수정</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:replace="fragments/footer :: fotter"></div>
+    </div>
+</body>
+</html>

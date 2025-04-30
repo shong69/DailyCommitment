@@ -1,13 +1,11 @@
 package jpabook.jpashop.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import jpabook.jpashop.Service.MemberService;
@@ -15,9 +13,8 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 
 //스프링 컨테이너에서 JUnit 테스트가 진행되도록함 -> Autowired 사용 가능
-@RunWith(SpringJUnit4ClassRunner.class)
-//스프링 설정 정보 지정
-@ContextConfiguration(locations = "classpath:appConfig.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 //테스트에서 사용하면 실행할 때마다 트랜잭션을 시작하고, 끝나면 강제로 롤백하게 된다.
 @Transactional
 public class MemberServiceTest {
@@ -40,8 +37,8 @@ public class MemberServiceTest {
 		assertEquals(member, memberRepository.fineOne(saveId)); //두 매개변수가 같은지
 	}
 	//지정한 예외 클래스가 발생해야 테스트 성공
-	@Test(expected = IllegalStateException.class)
-	public void 중복_회원_예외() throws Exception{
+	@Test
+	public void 중복_회원_예외() {
 		
 		//Given
 		Member member1 = new Member();
@@ -51,12 +48,15 @@ public class MemberServiceTest {
 		member2.setName("kim");
 		
 		//When
-		memberService.join(member1);
-		memberService.join(member2); //예외 발생 
+		IllegalStateException exception = assertThrows(IllegalStateException.class, ()->{			
+			memberService.join(member1);
+			memberService.join(member2); //예외 발생 
+		});
 		
 		
 		//Then
-		fail("예외가 발생해야 한다."); //-> 실행되지 않는 코드가 된다.
+		//IllegalStateException의 message를 아래처럼 설정해야 쓸 수 있는 코드
+//		assertEquals("예외가 발생해야 한다.",exception.getMessage()); //-> 실행되지 않는 코드가 된다.
 		//만약 fail이 호출되거나 IllegalException이 발생하지 않으면 테스트는 실해
 	}
 	

@@ -23,14 +23,15 @@ public class Member extends BaseEntity{ //등록일과 수정일 상속받음
 	//private String zipcode;
 	@Embedded
 	private Address address;
+
+	//회원과 주문 일대다 관계
+	@OneToMany(mappedBy="member")
+	private List<Order> orders = new ArrayList<Order>();
+	
 	
 	public Long getId() {
 		return id;
 	}
-	
-	//회원과 주문 일대다 관계
-	@OneToMany(mappedBy="member")
-	private List<Order> orders = new ArrayList<Order>();
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -49,5 +50,11 @@ public class Member extends BaseEntity{ //등록일과 수정일 상속받음
 		this.orders = orders;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	
 }
